@@ -231,6 +231,17 @@ function InternetLoadWorld.LoadWorld(world, homeserver_nid, refreshMode, onDownl
 			end
 		end
 		if(bSucceed and world.worldpath) then
+			ParaAsset.OpenArchive(world.worldpath, true)
+			local output = {}
+
+			commonlib.Files.Find(output, "", 0, 500, ":worldconfig.txt", world.worldpath)
+			ParaAsset.CloseArchive(world.worldpath)
+
+			if #output == 0 then
+				_guihelper.MessageBox(L"下载的世界文件已损坏，请重新尝试进入，或联系作者修复")
+				return false
+			end
+
 			if(page) then
 				page:CloseWindow();
 			end
