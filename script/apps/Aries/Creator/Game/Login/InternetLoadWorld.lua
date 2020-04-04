@@ -238,7 +238,7 @@ function InternetLoadWorld.LoadWorld(world, homeserver_nid, refreshMode, onDownl
 			ParaAsset.CloseArchive(world.worldpath)
 
 			if #output == 0 then
-				_guihelper.MessageBox(L"下载的世界文件已损坏，请重新尝试进入，或联系作者修复")
+				_guihelper.MessageBox(L"世界文件异常，请重新下载")
 				return false
 			end
 
